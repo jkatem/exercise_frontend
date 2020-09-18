@@ -17,8 +17,6 @@ function getExercises() {
         exercise.data.forEach(exercise => {
             let newExercise = new Exercise(exercise)
             newExercise.renderExercise()
-
-            // document.querySelector('#exercise-container').innerHTML += newExercise.renderExercise()
         })
     })
 }
