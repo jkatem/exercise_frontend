@@ -7,41 +7,41 @@
 
 </head>
 <body>
-
+    
     <div class="form-container">
-
         <form id="create-exercise-form">
-          <h3>Create Workout!</h3>
-      
-          <input id='input-title' type="text" name="title" value="" placeholder="Enter your workout name..." class="input-text">
-          <br><br>
-          <textarea id='input-description' name="description" rows="8" cols="80" value="" placeholder="Enter your workout description..."></textarea>
-          <br><br>
-          <input id='input-duration' type="text" name="duration" value="" placeholder="Enter your time" class="input-text">
-          <br><br>
+            <h3>Create Workout!</h3>
+    
+            <input id='input-name' type="text" name="title" value="" placeholder="Enter your workout name..." class="input-text">
+            <br><br>
+            <textarea id='input-description' name="description" rows="8" cols="80" value="" placeholder="Enter your workout description..."></textarea>
+            <br><br>
+            <input id='input-duration' type="text" name="duration" value="" placeholder="Enter your time" class="input-text">
+            <br><br>
 
-          <!-- // have preset muscle targets in which user gets to choose. Don't want to give user option to create new muscle target  -->
+        <!-- // have preset muscle targets in which user gets to choose. Don't want to give user option to create new muscle target  -->
 
-          <p>Choose Muscle Target </p>
-          <select id="muscle" name="muscle">
-            <option value="1">Legs</option>
-            <option value="2">Arms and Abs</option>
-            <option value="3">Full Body</option>
-          </select>
-          <br><br>
-      
-          <input id= 'create-button' type="submit" name="submit" value="Create New Workout" class="submit">
+            <p>Choose Muscle Target </p>
+            <select id="muscles" name="muscle">
+                <option value="1">Legs</option>
+                <option value="2">Arms and Abs</option>
+                <option value="3">Full Body</option>
+            </select>
+            <br><br>
+        
+            <input id= 'create-button' type="submit" name="submit" value="Create New Workout" class="submit">
         </form>
-      
-    </div>
-
-    <div id="exercise-container">
-        <h1 class="card-body"> </h1> 
+    
     </div>
 
     <main></main>
 
+    <!-- <div class="container" id="exercise-container"></div> -->
+
+
     <script type="text/javascript" src="src/index.js"></script>
+    <script type="text/javascript" src="src/exercise.js"></script>
+
 
 </body>
 </html>

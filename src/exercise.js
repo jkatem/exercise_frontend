@@ -1,76 +1,50 @@
 class Exercise {
-    constructor(exercise, exerciseAttributes) {
+    constructor(exercise) {
+        // debugger
         this.id = exercise.id
-        this.name = exerciseAttributes.name
-        this.description = exerciseAttributes.description
-        this.duration = exerciseAttributes.duration
-        this.muscle = exerciseAttributes.muscle
-        Exercise.push(this)
+        this.name = exercise.attributes.name
+        this.description = exercise.attributes.description
+        this.duration = exercise.attributes.duration
+        this.muscle = exercise.attributes.muscle.name
+        Exercise.all.push(this)
         console.log(this);
     }
-}
 
-    // I want user's inputs to be able to show up on the dom
-    // renderExercise() {
-    //     return `
-    //             <div class="col-md-f">
-    //                 <div class="card mb-4 shadow-sm">
-    //                     <div class="card-body">
-    //                         <h5 class="card-name">${this.name}</h5>
-    //                         <p class="card-text">${this.description}</p>
-    //                         <div class="d-flex justify-content-between align-items-center">
-    //                         <div class="btn-group">
-    //                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-    //                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-    //                         </div>
-    //                         // <small class="text-muted">Category: ${this.category.name}</small>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //     `
-    // }
+    renderExercise() {
+        const main = document.querySelector('main')
+               
+            const exerciseMarkup = `
+                <div data-id=${this.id}>
+                    <h3>${this.name}</h3>
+                    <p>${this.description}</p>
+                    <p>${this.duration}</p>
+                    <p>${this.muscle}</p>
 
-
-
-
-
+                </div> 
+                <br><br>`;
+    
+            const h2 = document.createElement('h2')
+            h2.innerHTML = exerciseMarkup
+            main.appendChild(h2)
+    
+    }
+    
 
     // renderExerciseCard() {
     //     return `
     //         <div class="col-md-f">
     //             <div class="card mb-4 shadow-sm">
     //                 <div class="card-body">
-    //                     <h5 class="card-name">${this.name}</h5>
+    //                     <h5 class="card-name">${this.title}</h5>
     //                     <p class="card-text">${this.description}</p>
-    //                     <div class="d-flex justify-content-between align-items-center">
-    //                     <div class="btn-group">
-    //                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-    //                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-    //                     </div>
-    //                     <small class="text-muted">Category: ${this.category.name}</small>
-    //                     </div>
+    //                     <p class="card-text">${this.duration}</p>
     //                 </div>
     //             </div>
     //         </div>
-            
     //     `
+        
+    //     console.log('hello')
     // }
+}
 
-//     function render(exercise) {
-//             const exerciseMarkup = `
-//                 <div data-id=${exercise.id}>
-//                     <h3>${exercise.attributes.name}</h3>
-//                     <p>${exercise.attributes.description}</p>
-//                     <p>${exercise.attributes.duration}</p>
-//                     <button data-id=${exercise.id}>edit</button>
-//                 </div>
-//                 <br><br>`;
-        
-//             document.querySelector('#exercise-container').innerHTML += exerciseMarkup;
-        
-//         }
-
-// }
-
-// Exercise.all = [];
+Exercise.all = [];

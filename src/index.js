@@ -3,52 +3,53 @@ const endPoint = "http://localhost:3000/api/v1/exercises"
 document.addEventListener('DOMContentLoaded', () => {
     getExercises()
 
-    // let createExerciseForm = document.querySelector("create-exercise-form")
-
-    // createExerciseForm.addEventListener('submit', (e) => createFormHandler(e))
-
-    // const exerciseContainer = document.querySelector('#exercise-container')
-    // exerciseContainer.addEventListener('click', e => {
-    //     console.log('clicked');
-    // });
+    const createExerciseForm = document.querySelector("#create-exercise-form")
+    createExerciseForm.addEventListener("submit", (e) => createFormHandler(e))
+    
 });
 
 
 function getExercises() {
+    // debugger
     fetch(endPoint)
     .then(resp => resp.json())
-    .then(json => renderExercises(json))
-}
+    .then(exercise => {
+        exercise.data.forEach(exercise => {
+            let newExercise = new Exercise(exercise)
+            newExercise.renderExercise()
 
-function renderExercises(exercises) {
-    const main = document.querySelector('main')
-    
-    exercises.data.forEach(exercise => {
-        const exerciseMarkup = `
-            <div data-id=${exercise.id}>
-                <h3>${exercise.attributes.name}</h3>
-                <p>${exercise.attributes.description}</p>
-                <p>${exercise.attributes.duration}</p>
-            </div> 
-            <br><br>`;
-
-        const h2 = document.createElement('h2')
-        h2.innerHTML = exerciseMarkup
-        main.appendChild(h2)
+            // document.querySelector('#exercise-container').innerHTML += newExercise.renderExercise()
+        })
     })
 }
 
 
-
 function createFormHandler(e) {
+    
     e.preventDefault()
-    const nameInput = document.querySelector('#input-title').value
+    const nameInput = document.querySelector('#input-name').value
     const descriptionInput = document.querySelector('#input-description').value
     const durationInput = document.querySelector('#input-duration').value
 
-    const muscleId = parseInt(document.querySelector('#muscle').value)
-    postFetch(nameInput, descriptionInput, durationInput, muscleId)
+    const muscle_id = parseInt(document.querySelector('#muscles').value)
+    postFetch(nameInput, descriptionInput, durationInput, muscle_id)
 }
 
-
-
+function postFetch(name, description, duration, muscle_id) {
+    
+    const bodyData = {name, description, duration, muscle_id}
+// debugger
+    fetch(endPoint, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+    .then(resp => resp.json())
+    .then(exercise => {
+        console.log(exercise);
+        const exerciseData = exercise.data
+// debugger
+        let newExercise = new Exercise(exerciseData)
+        newExercise.renderExercise()
+    }
+)}
