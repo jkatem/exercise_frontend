@@ -12,39 +12,32 @@ class Exercise {
 
     renderExercise() {
         const main = document.querySelector('main')
-               
+
             const exerciseMarkup = `
-                <div data-id=${this.id}>
+                    <div data-id=${this.id}>
                     <h3>${this.name}</h3>
                     <p>${this.description}</p>
                     <p>${this.duration}</p>
                     <p>${this.muscle}</p>
-
-                </div> 
-                <br><br>`;
+                </div>`;
     
-            const h2 = document.createElement('h2')
-            h2.innerHTML = exerciseMarkup
-            main.appendChild(h2)
+            let elm = document.createElement('div')
+            elm.innerHTML = exerciseMarkup
+            main.appendChild(elm)
+
+            let button = document.createElement('button');
+            button.setAttribute("id",this.id)
+            button.innerHTML = 'Delete';
+            button.addEventListener('click', (e) => removeExercise(e));
+            
+            // where do we want to have the button to appear?
+            // you can append it to another element just by doing something like
+            // document.getElementById('foobutton').appendChild(button);
+            main.appendChild(button);
     
     }
     
-
-    // renderExerciseCard() {
-    //     return `
-    //         <div class="col-md-f">
-    //             <div class="card mb-4 shadow-sm">
-    //                 <div class="card-body">
-    //                     <h5 class="card-name">${this.title}</h5>
-    //                     <p class="card-text">${this.description}</p>
-    //                     <p class="card-text">${this.duration}</p>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     `
-        
-    //     console.log('hello')
-    // }
 }
+
 
 Exercise.all = [];
