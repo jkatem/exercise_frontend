@@ -1,10 +1,8 @@
 const endPoint = "http://localhost:3000/api/v1/exercises"
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    getExercises()
-    // event listener and handler for create exercise form 
+    getExercises();
     const createExerciseForm = document.querySelector("#create-exercise-form")
     createExerciseForm.addEventListener("submit", (e) => createFormHandler(e))
 
@@ -30,7 +28,6 @@ function getExercises() {
     });
 }
     
-// create form 
 function createFormHandler(e) {
     e.preventDefault()
     const nameInput = document.querySelector('#input-name').value
@@ -39,15 +36,19 @@ function createFormHandler(e) {
 
     const muscle_id = parseInt(document.querySelector('#muscles').value)
     postFetch(nameInput, descriptionInput, durationInput, muscle_id)
+
 }
 
 
-function postFetch(name, description, duration, muscle_id) {    
+function postFetch(name, description, duration, muscle_id) { 
+    
+
     const bodyData = {name, description, duration, muscle_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
+        
     })
     .then(function(resp){
             if (resp.status != 202)
@@ -57,13 +58,15 @@ function postFetch(name, description, duration, muscle_id) {
                 return resp;
             }   
         })
+
     .then(resp => resp.json())
     .then(exercise => {
+        
         console.log(exercise);
         const exerciseData = exercise.data
 
         let newExercise = new Exercise(exerciseData)
-        newExercise.renderExercise();
+        newExercise.renderExercise();  
 
     })
     .catch(error => {
@@ -74,7 +77,6 @@ function postFetch(name, description, duration, muscle_id) {
 
 
 function removeExercise(e) {
-    e.preventDefault();
     let execId = e.target.id[3];
     fetch(`http://localhost:3000/api/v1/exercises/${e.target.id}`, {
         method: "DELETE",
@@ -95,9 +97,3 @@ function removeExercise(e) {
     });
 }
 
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}

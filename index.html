@@ -4,97 +4,51 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Exercise Tracker</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
     <link href="styling.css" rel="stylesheet">    
 
     <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">      
-        <div class="container-fluid">          
-            <div class="navbar-header">            
-                <a class="navbar-brand">Workout Tracker</a>
-                <!-- <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> -->
-                
-                <!-- </button> -->
-            </div>
-            <!-- <div class="navbar-collapse collapse" id="navbarCollapse">
-                <ul class="nav navbar-nav">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">Contact us</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#loginModal" data-toggle="modal">Login</a></li>
-                </ul>
-            
-            </div> -->
-        </div>
-    
+      <div class="navbar-header">            
+          <a class="navbar-brand">Workout Tracker</a>
+      </div>
     </nav>
   </head>
   <body>
-      <!-- <div class="row"> -->
-        <div class="column">
-          <div class="form-container">
-            <form id="create-exercise-form">
-            <h3>Create Workout!</h3>
-        
-            <input id='input-name' type="text" name="title" value="" placeholder="Enter your workout name..." class="input-text">
-            <br><br>
-            <textarea id='input-description' name="description" rows="8" cols="40" value="" placeholder="Enter your workout description..."></textarea>
-            <br><br>
-            <input id='input-duration' type="text" name="duration" value="" placeholder="Enter your time" class="input-text">
-            <br><br>
+    <div class="column">
+      <div class="form-container">
+        <form id="create-exercise-form">
+        <h3>Create Workout!</h3>
+    
+        <input id='input-name' type="text" name="title" value="" placeholder="Enter your workout name..." class="input-text">
+        <br><br>
+        <textarea id='input-description' name="description" rows="8" cols="40" value="" placeholder="Enter your workout description..."></textarea>
+        <br><br>
+        <input id='input-duration' type="text" name="duration" value="" placeholder="Enter your time" class="input-text">
+        <br><br>
 
-            <p>Choose Muscle Target </p>
-            <select id="muscles" name="muscle">
-                <option value="1">Legs</option>
-                <option value="2">Arms and Abs</option>
-                <option value="3">Full Body</option>
-            </select>
-            <br><br>
-            <input id= 'create-button' type="submit" name="submit" value="Add Workout" class="submit">
-            </form>
-          </div>
-        </div>
-      <!-- </div> -->
-
-
-<!-- <div class="row"> -->
-  <div class="column">
-    <div class="card">
-      <main></main>
+        <p>Choose Muscle Target </p>
+        <select id="muscles" name="muscle">
+            <option value="1">Legs</option>
+            <option value="2">Arms and Abs</option>
+            <option value="3">Full Body</option>
+        </select>
+        <br><br>
+        <input id= 'create-button' type="submit" name="submit" value="Add Workout" class="submit">
+        </form>
+      </div>
     </div>
-  </div>
-<!-- </div> -->
-
-        <!-- <section class="jumbotron text-center">
-            
-        </section> -->
-
-      <!-- Jumbotron with Sign up Button  --> 
-         <!-- <div class="jumbotron" id="myContainer"> 
-            <h1>Exercise Tracker App</h1>
-            <p>Your Exercises with you wherever you go.</p>
-            <button type="button" class="btn btn-lg green signup" data-target="#signupModal" data-toggle="modal">Sign up-It's free</button>
-        </div> -->
-      <!-- Login Form  -->
-
-      <!-- Sign up Form  -->
-
-      <!-- Forgot password form  -->
-
-      <!-- Footer  -->
- 
+    <div class="column">
+      <div class="card">
+        <div class="form-msgs"></div>
+          <main></main>
+      </div>
+    </div>
 
 
+  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -104,6 +58,6 @@
     <script type="text/javascript" src="src/index.js"></script>
     <script type="text/javascript" src="src/exercise.js"></script> 
     
-    </body>
+  </body>
 </html>
 
