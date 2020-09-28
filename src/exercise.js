@@ -30,7 +30,6 @@ class Exercise {
             button.innerHTML = 'Delete';
             button.addEventListener('click', (e) => removeExercise(e));
             main.appendChild(button);
-            // alert("You have successfully created the exercise.")
     }
 }
 Exercise.all = [];
