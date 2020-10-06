@@ -4,51 +4,58 @@ const endPoint = "http://localhost:3000/api/v1/exercises"
 document.addEventListener('DOMContentLoaded', () => {
     getExercises();
     const createExerciseForm = document.querySelector("#create-exercise-form")
-    createExerciseForm.addEventListener("submit", (e) => createFormHandler(e))
-
+    createExerciseForm.addEventListener("submit", (e) => createFormHandler(e))    
 });
+
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+    let filteredExercises = Exercise.all.filter(exercise => {
+        return (
+            exercise.name.toLowerCase().includes(searchString)
+            )
+    })
+    const main = document.querySelector('main')
+    main.innerHTML = ''
+    filteredExercises.forEach(exercise => {exercise.renderExercise(e)})    
+})
 
 function getExercises() {
     fetch(endPoint)
-    .then(function(resp){
+    .then(function(resp){ 
         if (resp.status == 200)
            return resp;
         else
             throw new Error(resp.message)
     })
     .then(resp => resp.json())
-    .then(exercise => {
-        exercise.data.forEach(exercise => {
-            let newExercise = new Exercise(exercise)
-            newExercise.renderExercise()
-        })
+    .then((exercises) => {
+            exercises.data.forEach(exercise => {
+                let newExercise = new Exercise(exercise)
+                newExercise.renderExercise();
+            });
     })
     .catch(error => {
-        alert(error.message);
+        alert(error.message)
     });
 }
     
 function createFormHandler(e) {
-    e.preventDefault()
+    e.preventDefault() 
     const nameInput = document.querySelector('#input-name').value
     const descriptionInput = document.querySelector('#input-description').value
     const durationInput = document.querySelector('#input-duration').value
-
     const muscle_id = parseInt(document.querySelector('#muscles').value)
     postFetch(nameInput, descriptionInput, durationInput, muscle_id)
-
 }
 
 
 function postFetch(name, description, duration, muscle_id) { 
-    
-
     const bodyData = {name, description, duration, muscle_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(bodyData)
-        
+        body: JSON.stringify(bodyData)        
     })
     .then(function(resp){
             if (resp.status != 202)
@@ -61,11 +68,8 @@ function postFetch(name, description, duration, muscle_id) {
 
     .then(resp => resp.json())
     .then(exercise => {
-        
-        console.log(exercise);
-        const exerciseData = exercise.data
 
-        let newExercise = new Exercise(exerciseData)
+        let newExercise = new Exercise(exercise.data)
         newExercise.renderExercise();  
 
     })
@@ -77,7 +81,6 @@ function postFetch(name, description, duration, muscle_id) {
 
 
 function removeExercise(e) {
-    let execId = e.target.id[3];
     fetch(`http://localhost:3000/api/v1/exercises/${e.target.id}`, {
         method: "DELETE",
         headers: {
